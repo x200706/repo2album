@@ -1,5 +1,6 @@
 # repo2album
 一個簡單易用的GitHub Pages相簿工具，支援自動掃描圖片目錄->動態渲染相簿->GitHub Pages靜態HTML頁面展示，fork此倉庫開箱即用
+Demo: [https://x200706.github.io/repo2album/](https://x200706.github.io/repo2album/)
 
 ## 功能特點
 - **自動掃描**：透過GitHub Contents API自動讀取相簿和照片
