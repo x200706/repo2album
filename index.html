@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>repo2album</title>
+  <!-- Tailwind CSS v3 -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome -->
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <!-- 自訂樣式 -->
+  <link rel="stylesheet" href="assets/style.css">
+  <!-- Tailwind 配置 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#374151',
+            secondary: '#F3F4F6',
+            accent: '#6B7280',
+          },
+          fontFamily: {
+            sans: ['Noto Sans TC', 'sans-serif'],
+          },
+          transitionProperty: {
+            'height': 'height',
+            'spacing': 'margin, padding',
+          }
+        }
+      }
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .album-card {
+        @apply bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1;
+      }
+      .album-card-image {
+        @apply w-full h-48 object-cover transition-transform duration-500 hover:scale-105;
+      }
+      .album-card-content {
+        @apply p-4;
+      }
+      .album-card-title {
+        @apply text-lg font-semibold text-primary mb-1 truncate;
+      }
+      .album-card-count {
+        @apply text-sm text-accent;
+      }
+      .btn-back {
+        @apply inline-flex items-center px-4 py-2 bg-primary text-white rounded-md hover:bg-opacity-90 transition-colors duration-300;
+      }
+      .image-grid {
+        @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4;
+      }
+      .photo-card {
+        @apply bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer;
+      }
+      .photo-image {
+        @apply w-full h-48 object-cover transition-transform duration-500 hover:scale-105;
+      }
+    }
+  </style>
+</head>
+<body class="bg-secondary min-h-screen font-sans">
+  <div class="container mx-auto px-4 py-8">
+    <!-- 頁面標題 -->
+    <header class="mb-8 text-center">
+      <h1 class="text-3xl font-bold text-primary mb-2">repo2album</h1>
+      <p class="text-accent">把Github倉庫秒變公開相簿</p>
+    </header>
+
+    <!-- 主要內容區域 -->
+    <main id="main-content">
+      <!-- 相簿列表將在此動態生成 -->
+      <div id="albums-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <!-- 加載中提示 -->
+        <div class="col-span-full text-center py-12">
+          <div class="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+          <p class="mt-4 text-accent">正在載入相簿...</p>
+        </div>
+      </div>
+
+      <!-- 相簿詳情頁將在此動態生成 -->
+      <div id="album-details" class="hidden">
+        <!-- 返回按鈕和相簿標題 -->
+        <div class="flex items-center justify-between mb-6">
+          <button id="back-to-albums" class="btn-back">
+            <i class="fa fa-arrow-left mr-2"></i> 返回相簿列表
+          </button>
+          <h2 id="album-title" class="text-2xl font-bold text-primary"></h2>
+        </div>
+        
+        <!-- 照片網格將在此動態生成 -->
+        <div id="photos-container" class="image-grid">
+          <!-- 加載中提示 -->
+          <div class="col-span-full text-center py-12">
+            <div class="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+            <p class="mt-4 text-accent">正在載入照片...</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+
+
+  <!-- PhotoSwipe CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/photoswipe.min.css">
+  
+  <!-- PhotoSwipe JS -->
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/photoswipe.umd.min.js"></script>
+  
+  <!-- 自訂腳本 -->
+  <script src="assets/gallery.js" defer></script>
+</body>
+</html>

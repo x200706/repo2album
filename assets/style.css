@@ -1,0 +1,156 @@
+/* 全局樣式 */
+body {
+  font-family: 'Noto Sans TC', sans-serif;
+  color: #374151;
+  background-color: #F3F4F6;
+  line-height: 1.6;
+}
+
+/* 相簿卡片樣式增強 */
+.album-card {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.album-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, transparent 60%, rgba(0, 0, 0, 0.7) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.album-card:hover::before {
+  opacity: 1;
+}
+
+.album-card:hover .album-card-title,
+.album-card:hover .album-card-count {
+  color: white;
+  position: relative;
+  z-index: 2;
+}
+
+/* 照片卡片樣式 */
+.photo-card {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer; /* 顯示指針游標，表示可點擊 */
+}
+
+.photo-card:hover {
+  transform: scale(1.02); /* 輕微放大效果 */
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.photo-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.1); /* 輕微暗化效果 */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.photo-card:hover::after {
+  opacity: 1;
+}
+
+/* 加載動畫 */
+.loading-spinner {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(55, 65, 81, 0.3);
+  border-radius: 50%;
+  border-top-color: #374151;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* 淡入動畫 */
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 錯誤提示樣式 */
+.error-message {
+  background-color: #FEE2E2;
+  color: #B91C1C;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+  border-left: 4px solid #B91C1C;
+}
+
+/* 空狀態樣式 */
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #6B7280;
+}
+
+.empty-state i {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #D1D5DB;
+}
+
+/* 響應式調整 */
+@media (max-width: 640px) {
+  .album-card-image,
+  .photo-image {
+    height: 200px;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .album-card-image,
+  .photo-image {
+    height: 240px;
+  }
+}
+
+/* PhotoSwipe 自訂樣式 */
+.pswp__caption__center {
+  font-family: 'Noto Sans TC', sans-serif;
+}
+
+.pswp__button--close,
+.pswp__button--share,
+.pswp__button--fs,
+.pswp__button--zoom,
+.pswp__button--arrow--left,
+.pswp__button--arrow--right {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+}
+
+.pswp__button--close:hover,
+.pswp__button--share:hover,
+.pswp__button--fs:hover,
+.pswp__button--zoom:hover,
+.pswp__button--arrow--left:hover,
+.pswp__button--arrow--right:hover {
+  background-color: rgba(0, 0, 0, 0.7) !important;
+}
