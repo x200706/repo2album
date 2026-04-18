@@ -1,4 +1,8 @@
-# repo2album
+<p align="center">
+<img width="476" height="175" alt="image" src="https://github.com/user-attachments/assets/5e9fa770-374e-407b-a74a-5649b9702e31" />
+</p>
+
+## About repo2album
 An easy-to-use GitHub Pages photo album tool. Automatically scans image directories, dynamically renders albums, and displays static HTML pages on GitHub Pages. Fork this repository and use it right away.
 
 Demo: [https://x200706.github.io/repo2album/](https://x200706.github.io/repo2album/)
